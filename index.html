@@ -1,1 +1,243 @@
-Coming soon!
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Davidsonian Scene Graph</title>
+    <meta name="description" content="Crossmodal 3600" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons&display=block"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H3R11ZELBV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+      gtag("config", "G-H3R11ZELBV");
+    </script>
+  </head>
+
+  <body onload="loadCallback();">
+    <div class="mask" id="start-mask"></div>
+    <div class="wrap">
+      <h1>Davidsonian Scene Graph</h1>
+      <h2 class="subtitle">
+        Improving Reliability in Fine-Grained Evaluation for <br />
+        Text-Image Generation
+      </h2>
+      <div class="author-grid-top">
+        <div class="author-column">
+          <span class="author"><a href="https://j-min.io/" target="_blank">Jaemin Cho</a></span
+          ><br />
+          <span class="affiliation">UNC Chapel Hill</span>
+        </div>
+        <div class="author-column">
+          <span class="author"
+            ><a href="https://yushi-hu.github.io/" target="_blank">Yushi Hu</a></span
+          ><br />
+          <span class="affiliation">UWashington</span>
+        </div>
+        <div class="author-column">
+          <span class="author"
+            ><a href="https://www.roopalgarg.com/" target="_blank">Roopal Garg</a></span
+          ><br />
+          <span class="affiliation">Google Research</span>
+        </div>
+        <div class="author-column">
+          <span class="author"
+            ><a href="https://panderson.me/" target="_blank">Peter Anderson</a></span
+          ><br />
+          <span class="affiliation">Google Research</span>
+        </div>
+        <div class="author-column">
+          <span class="author"
+            ><a href="https://ranjaykrishna.com/index.html" target="_blank">Ranjay Krishna</a></span
+          ><br />
+          <span class="affiliation">UWashington</span>
+        </div>
+      </div>
+      <div class="author-grid-bottom">
+        <div class="author-column">
+          <span class="author"
+            ><a href="https://research.google/people/JasonBaldridge/" target="_blank"
+              >Jason Baldridge</a
+            ></span
+          ><br />
+          <span class="affiliation">Google Research</span>
+        </div>
+        <div class="author-column">
+          <span class="author"
+            ><a href="https://www.cs.unc.edu/~mbansal/" target="_blank">Mohit Bansal</a></span
+          ><br />
+          <span class="affiliation">UNC Chapel Hill</span>
+        </div>
+        <div class="author-column">
+          <span class="author"
+            ><a href="https://jponttuset.cat" target="_blank">Jordi Pont-Tuset</a></span
+          ><br />
+          <span class="affiliation">Google Research</span>
+        </div>
+        <div class="author-column">
+          <span class="author"
+            ><a href="https://research.google/people/107321/" target="_blank">Su Wang</a></span
+          ><br />
+          <span class="affiliation">Google Research</span>
+        </div>
+      </div>
+      <div class="button-bar center">
+        <a href="" target="_blank"
+          ><span class="button"
+            ><span class="button-wrapper"
+              ><i style="font-size: small" class="fa fa-file"></i> PDF</span
+            ></span
+          ></a
+        >
+        <a href="https://github.com/j-min/DSG" target="_blank"
+          ><span class="button"
+            ><span class="button-wrapper"><i class="fa fa-github"></i> Code</span></span
+          ></a
+        >
+        <!-- <a href="" target="_blank"> -->
+        <span class="button" style="background-color: #9d9d9d; cursor: default"
+          ><span class="button-wrapper"
+            ><i style="font-size: small" class="fa fa-database"></i> DSG-1k (Soon)</span
+          ></span
+        >
+        <!-- </a> -->
+      </div>
+      <div>
+        <img class="splash-figure" src="/web-data/figures/dsg_splash.jpg" />
+      </div>
+
+      <hr class="separator" />
+      <h2>Abstract</h2>
+      <div class="block">
+        Evaluating text-to-image models is notoriously difficult. A strong recent approach for
+        assessing text-image faithfulness is based on QG/A (question generation and answering),
+        which uses pre-trained foundational models to automatically generate a set of questions and
+        answers from the prompt, and output images are scored based on whether these answers
+        extracted with a visual question answering model are consistent with the prompt-based
+        answers. This kind of evaluation is naturally dependent on the quality of the underlying QG
+        and QA models. We identify and address several reliability challenges in existing QG/A work:
+        (a) QG questions should respect the prompt (avoiding hallucinations, duplications, and
+        omissions) and (b) VQA answers should be consistent (not asserting that there is no
+        motorcycle in an image while also claiming the motorcycle is blue). We address these issues
+        with Davidsonian Scene Graph (DSG), an empirically grounded evaluation framework inspired by
+        formal semantics. DSG is an automatic, graph-based QG/A that is modularly implemented to be
+        adaptable to any QG/A module. DSG produces atomic and unique questions organized in
+        dependency graphs, which (i) ensure appropriate semantic coverage and (ii) sidestep
+        inconsistent answers. With extensive experimentation and human evaluation on a range of
+        model configurations (LLM, VQA, and T2I), we empirically demonstrate that DSG addresses the
+        challenges noted above. Finally, we present DSG-1k, an open-sourced evaluation benchmark
+        that includes 1,060 prompts, covering a wide range of fine-grained semantic categories with
+        a balanced distribution. We will release the DSG-1k prompts and the corresponding DSG
+        questions.
+      </div>
+
+      <hr class="separator" />
+      <h2>QG/A: New Paradigm in T2I Alignment Eval</h2>
+      <div>
+        <img class="figure-row" src="/web-data/figures/t2i_eval_paradigm_shift.jpg" />
+      </div>
+
+      <hr class="separator" />
+      <h2>Reliability Issues in Existing QG/A Methods</h2>
+      <div class="center">
+        <img style="max-width: 70%;" src="/web-data/figures/t2i_eval_reliability_issues.jpg" />
+      </div>
+
+      <hr class="separator" />
+      <h2>DSG Solution to the Reliability Issues</h2>
+      <div>
+        <img class="figure-row" src="/web-data/figures/t2i_eval_dsg_solution.jpg" />
+      </div>
+
+      <hr class="separator" />
+      <h2>Publication</h2>
+      <div class="center">
+        <b
+          >Davidsonian Scene Graph: Improving Reliability in Fine-Grained Evaluation for Text-Image
+          Generation</b
+        ><br />
+        Jaemin Cho, Yushi Hu, Roopal Garg, Peter Anderson, Ranjay Krishna,<br />Jason Baldridge, Mohit
+        Bansal, Jordi Pont-Tuset, Su Wang<br />
+        arXiv 2024<br />
+        [<a href="#" target="_blank">PDF</a>] [<a href="#" target="_blank">arXiv</a>] [<a
+          href="javascript:document.getElementById('bibtex').open = true;"
+          >BibTeX</a
+        >]
+        <a href="#" target="_blank">
+          <div class="row paper-row">
+            <div class="paper-col">
+              <img class="paper-col-im" src="./web-data/thumb/thumbnail-0.jpg" />
+            </div>
+            <div class="paper-col">
+              <img class="paper-col-im" src="./web-data/thumb/thumbnail-1.jpg" />
+            </div>
+            <div class="paper-col">
+              <img class="paper-col-im" src="./web-data/thumb/thumbnail-2.jpg" />
+            </div>
+            <div class="paper-col">
+              <img class="paper-col-im" src="./web-data/thumb/thumbnail-3.jpg" />
+            </div>
+            <div class="paper-col">
+              <img class="paper-col-im" src="./web-data/thumb/thumbnail-4.jpg" />
+            </div>
+            <div class="paper-col">
+              <img class="paper-col-im" src="./web-data/thumb/thumbnail-5.jpg" />
+            </div>
+            <div class="paper-col">
+              <img class="paper-col-im" src="./web-data/thumb/thumbnail-6.jpg" />
+            </div>
+            <div class="paper-col">
+              <img class="paper-col-im" src="./web-data/thumb/thumbnail-7.jpg" />
+            </div>
+            <div class="paper-col">
+              <img class="paper-col-im" src="./web-data/thumb/thumbnail-8.jpg" />
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <mwc-dialog id="bibtex">
+      <pre id="bibtex_text">
+@inproceedings{JaeminCho2024,
+author        = {Jaemin Cho and Yushi Hu and Roopal Garg and Peter Anderson and Ranjay Krishna and Jason Baldridge and Mohit Bansal and Jordi Pont-Tuset and Su Wang},
+title         = {{Davidsonian Scene Graph: Improving Reliability in Fine-Grained Evaluation for Text-Image Generation}},
+booktitle     = {arXiv},
+year          = {2024}
+}</pre
+      >
+      <mwc-button
+        slot="secondaryAction"
+        onclick="navigator.clipboard.writeText(document.getElementById('bibtex_text').innerText);"
+      >
+        Copy to clipboard
+      </mwc-button>
+      <mwc-button slot="primaryAction" onclick="document.getElementById('bibtex').open = false;">
+        Close
+      </mwc-button>
+    </mwc-dialog>
+    <br /><br /><br /><br /><br />
+    <script type="text/javascript" src="web_code.js"></script>
+  </body>
+</html>
